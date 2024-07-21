@@ -1,6 +1,8 @@
+using Hospital.Models;
 using Hospital.Repositories;
 using Hospital.Repositories.Implementation;
 using Hospital.Repositories.Interfaces;
+using Hospital.Services;
 using Hospital.Utilities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -17,6 +19,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+builder.Services.AddTransient<IHospitalInfo, HospitalInfoService>();
+builder.Services.AddTransient<IRoomService, RoomService>();
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 builder.Services.AddRazorPages();
@@ -41,7 +45,7 @@ app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{area=Patient}/{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=admin}/{controller=Hospitals}/{action=Index}/{id?}");
 
 app.Run();
 
