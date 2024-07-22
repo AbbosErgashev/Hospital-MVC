@@ -6,31 +6,34 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Hospital.Web.Areas.Admin.Controllers
 {
     [Area("admin")]
-    public class HospitalsController : Controller
+    public class ContactsController : Controller
     {
-        private readonly IHospitalInfo _hospitalInfo;
+        private IContactService _contact;
+        private IHospitalInfo _hospitalInfo;
 
-        public HospitalsController(IHospitalInfo hospitalInfo)
+        public ContactsController(IContactService contact, IHospitalInfo hospitalInfo)
         {
+            _contact = contact;
             _hospitalInfo = hospitalInfo;
         }
 
         public IActionResult Index(int pageNumber = 1, int pageSize = 10)
         {
-            return View(_hospitalInfo.GetAll(pageNumber, pageSize));
+            return View(_contact.GetAll(pageNumber, pageSize));
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var viewModel = _hospitalInfo.GetHospitalById(id);
+            //ViewBag.hospital = new SelectList(_hospitalInfo.GetAll(), "Id", "Name");
+            var viewModel = _contact.GetContactById(id);
             return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Edit(HospitalInfoViewModel viewModel)
+        public IActionResult Edit(ContactViewModel vm)
         {
-            _hospitalInfo.UpdateHospital(viewModel);
+            _contact.UpdateContact(vm);
             return RedirectToAction("Index");
         }
 
@@ -41,15 +44,15 @@ namespace Hospital.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(HospitalInfoViewModel viewModel)
+        public IActionResult Create(ContactViewModel vm)
         {
-            _hospitalInfo.InsertHospitalInfo(viewModel);
+            _contact.InsertContact(vm);
             return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
         {
-            _hospitalInfo.DeleteHospitalInfo(id);
+            _contact.DeleteContact(id);
             return RedirectToAction("Index");
         }
     }
