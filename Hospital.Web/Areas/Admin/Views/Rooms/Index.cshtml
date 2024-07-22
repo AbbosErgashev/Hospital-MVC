@@ -18,7 +18,7 @@
                 Id
             </th>
             <th>
-                RoomNumber
+                Room Number
             </th>
             <th>
                 Type
@@ -27,7 +27,7 @@
                 Status
             </th>
             <th>
-                HospitalInfoId
+                Hospital Info
             </th>
             <th></th>
         </tr>
@@ -49,7 +49,7 @@
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.HospitalInfoId)
+                    @Html.DisplayFor(modelItem => item.HospitalInfo.Name)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
