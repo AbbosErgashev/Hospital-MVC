@@ -25,7 +25,7 @@ namespace Hospital.Web.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            //ViewBag.hospital = new SelectList(_hospitalInfo.GetAll(), "Id", "Name");
+            ViewBag.hospital = new SelectList(_hospitalInfo.GetAll(1, 10).Data, "Id", "Name");
             var viewModel = _contact.GetContactById(id);
             return View(viewModel);
         }
@@ -40,6 +40,7 @@ namespace Hospital.Web.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewBag.hospital = new SelectList(_hospitalInfo.GetAll(1, 10).Data, "Id", "Name");
             return View();
         }
 
