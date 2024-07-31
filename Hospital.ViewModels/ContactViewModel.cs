@@ -8,6 +8,7 @@ namespace Hospital.ViewModels
         public string Email { get; set; }
         public string Phone { get; set; }
         public int HospitalInfoId { get; set; }
+        public HospitalInfo HospitalInfo { get; set; }
 
         public ContactViewModel()
         {
@@ -20,6 +21,7 @@ namespace Hospital.ViewModels
             Email = model.Email;
             Phone = model.Phone;
             HospitalInfoId = model.HospitalId;
+            HospitalInfo = model.Hospital;
         }
 
         public Contact ConvertViewModel(ContactViewModel model)
@@ -29,7 +31,8 @@ namespace Hospital.ViewModels
                 Id = model.Id,
                 Email = model.Email,
                 Phone = model.Phone,
-                HospitalId = model.HospitalInfoId
+                HospitalId = model.HospitalInfoId,
+                Hospital = model.HospitalInfo
             };
         }
     }
