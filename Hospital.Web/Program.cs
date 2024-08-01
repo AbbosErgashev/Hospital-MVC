@@ -1,4 +1,3 @@
-using Hospital.Models;
 using Hospital.Repositories;
 using Hospital.Repositories.Implementation;
 using Hospital.Repositories.Interfaces;
@@ -24,6 +23,7 @@ builder.Services.AddTransient<IRoomService, RoomService>();
 builder.Services.AddTransient<IContactService, ContactService>();
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddScoped<DepartmentService>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

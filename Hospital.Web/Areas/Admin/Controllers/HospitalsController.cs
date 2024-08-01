@@ -1,7 +1,6 @@
 ﻿using Hospital.Services;
 using Hospital.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Hospital.Web.Areas.Admin.Controllers
 {
