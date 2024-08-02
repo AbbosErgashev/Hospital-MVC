@@ -1,11 +1,10 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Hospital.Models
+﻿namespace Hospital.Models
 {
     public class Timing
     {
         public int Id { get; set; }
-        public ApplicationUser DoctorId { get; set; }
+        public Guid DoctorId { get; set; }
+        public ApplicationUser Doctor { get; set; }
         public DateTime Date { get; set; }
         public int MorningShiftStartTime { get; set; }
         public int MorningShiftEndTime { get; set; }

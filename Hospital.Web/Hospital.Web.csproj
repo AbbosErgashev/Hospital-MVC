@@ -31,8 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Doctor\Controllers\" />
-    <Folder Include="Areas\Doctor\Views\" />
     <Folder Include="Areas\Identity\Controllers\" />
     <Folder Include="Areas\Identity\Data\" />
   </ItemGroup>
