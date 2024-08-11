@@ -97,7 +97,7 @@
                                                     <li><a class="nav-link" asp-area="Doctor" asp-controller="Doctors" asp-action="AddTiming">Doctors Timing</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">Users</a></li>
+                                            <li><a href="/html/index.html">Users</a></li>
                                             <li><a class="nav-link" asp-area="Patient" asp-controller="Home" asp-action="Index">Patient</a></li>
                                             <li><a href="#">Contact</a></li>
                                             <li>
@@ -112,6 +112,9 @@
                                     </nav>
                                 </div>
                             </div>
+                            @* <div class="dropdown">
+                                
+                            </div> *@
                             <div class="col-xl-4 col-lg-4 col-md-4">
                                 <div class="header-right f-right d-none d-lg-block">
                                     <!-- Heder social -->
@@ -892,31 +895,31 @@
                         <div class="video-items-active">
                             <div class="video-items text-center">
                                 <video controls>
-                                    <source src="~/assets/video/news2.mp4" type="video/mp4">
+                                    <source src="~/assets/img/gallery/3.png" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
                             <div class="video-items text-center">
                                 <video controls>
-                                    <source src="~/assets/video/news1.mp4" type="video/mp4">
+                                    <source src="~/assets/img/gallery/3.png" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
                             <div class="video-items text-center">
                                 <video controls>
-                                    <source src="~/assets/video/news3.mp4" type="video/mp4">
+                                    <source src="~/assets/img/gallery/3.png" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
                             <div class="video-items text-center">
                                 <video controls>
-                                    <source src="~/assets/video/news1.mp4" type="video/mp4">
+                                    <source src="~/assets/img/gallery/3.png" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
                             <div class="video-items text-center">
                                 <video controls>
-                                    <source src="~/assets/video/news3.mp4" type="video/mp4">
+                                    <source src="~/assets/img/gallery/3.png" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
@@ -929,7 +932,7 @@
                             <div class="testmonial-nav text-center">
                                 <div class="single-video">
                                     <video controls>
-                                        <source src="~/assets/video/news2.mp4" type="video/mp4">
+                                        <source src="~/assets/img/gallery/3.png" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
                                     <div class="video-intro">
@@ -938,7 +941,7 @@
                                 </div>
                                 <div class="single-video">
                                     <video controls>
-                                        <source src="~/assets/video/news1.mp4" type="video/mp4">
+                                        <source src="~/assets/img/gallery/3.png" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
                                     <div class="video-intro">
@@ -947,7 +950,7 @@
                                 </div>
                                 <div class="single-video">
                                     <video controls>
-                                        <source src="~/assets/video/news3.mp4" type="video/mp4">
+                                        <source src="~/assets/img/gallery/3.png" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
                                     <div class="video-intro">
@@ -956,7 +959,7 @@
                                 </div>
                                 <div class="single-video">
                                     <video controls>
-                                        <source src="~/assets/video/news1.mp4" type="video/mp4">
+                                        <source src="~/assets/img/gallery/3.png" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
                                     <div class="video-intro">
@@ -965,7 +968,7 @@
                                 </div>
                                 <div class="single-video">
                                     <video controls>
-                                        <source src="~/assets/video/news3.mp4" type="video/mp4">
+                                        <source src="~/assets/img/gallery/3.png" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
                                     <div class="video-intro">
@@ -1208,15 +1211,14 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-@* <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown"
-            data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="fas fa-globe"></i> Language
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-        <li><a class="dropdown-item" href="#"><img src="~/images/language/uz.png" alt="Uzbek" style="width: 20px;" /> O'zbek</a></li>
-        <li><a class="dropdown-item" href="#"><img src="~/images/language/ru.png" alt="Russian" style="width: 20px;" /> Русский</a></li>
-        <li><a class="dropdown-item" href="#"><img src="~/images/language/en.png" alt="England" style="width: 20px;" /> England</a></li>
-    </ul>
-</div>
-<partial name="_LoginPartial" /> *@
+
+@*<partial name="_LoginPartial" /> *@
+@* <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown"
+        data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="fas fa-globe"></i>
+</button>
+<ul class="dropdown-menu" aria-labelledby="languageDropdown">
+    <li><a class="dropdown-item" href="#"><img src="~/assets/img/language/uz.png" alt="Uzbek" style="width: 15px;" /> O'zbek</a></li>
+    <li><a class="dropdown-item" href="#"><img src="~/assets/img/language/ru.png" alt="Russian" style="width: 15px;" /> Русский</a></li>
+    <li><a class="dropdown-item" href="#"><img src="~/assets/img/language/en.png" alt="England" style="width: 15px;" /> England</a></li>
+</ul> *@
