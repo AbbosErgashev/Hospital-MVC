@@ -2,77 +2,58 @@
 @model PagedResult<Hospital.ViewModels.HospitalInfoViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Hospitals List";
 }
 
-<p>
-    <a asp-action="Create">Create New Hospital</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                Type
-            </th>
-            <th>
-                City
-            </th>
-            <th>
-                Pin Code
-            </th>
-            <th>
-                Country
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Data)
-        {
+<div class="container mt-4">
+    <h1 class="mb-4">Hospitals</h1>
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Add New Hospital</a>
+    </p>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Type)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PinCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>City</th>
+                <th>Pin Code</th>
+                <th>Country</th>
+                <th>Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Data)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                    <td>@Html.DisplayFor(modelItem => item.City)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PinCode)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Country)</td>
+                    <td>
+                        <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<cs-pager cs-paging-pagesize=(int)Model.PageSize
-          cs-paging-pagenumber=(int)Model.PageNumber
-          cs-paging-totalitems=(int)Model.TotalItems
-          cs-pagenumber-param="pageNumber"
-          asp-controller="Hospitals"
-          asp-action="Index"
-          cs-pager-li-current-class="page-item active"
-          cs-pager-li-other-class=" page- item"
-          cs-pager-li-non-active-class="page-item disabled"
-          cs-pager-link-current-class="page-link"
-          cs-pager-link-other-class="page-link">
-</cs-pager>
+    <div class="d-flex justify-content-center mt-4">
+        <cs-pager cs-paging-pagesize=(int)Model.PageSize
+                  cs-paging-pagenumber=(int)Model.PageNumber
+                  cs-paging-totalitems=(int)Model.TotalItems
+                  cs-pagenumber-param="pageNumber"
+                  asp-controller="Hospitals"
+                  asp-action="Index"
+                  cs-pager-li-current-class="page-item active"
+                  cs-pager-li-other-class="page-item"
+                  cs-pager-li-non-active-class="page-item disabled"
+                  cs-pager-link-current-class="page-link"
+                  cs-pager-link-other-class="page-link">
+        </cs-pager>
+    </div>
+</div>

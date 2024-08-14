@@ -38,7 +38,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseStaticFiles();
 
 DataSedding(app);
 
@@ -49,7 +48,7 @@ app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{area=Home}/{controller=Home}/{action=Index}");
+    pattern: "{area=Home}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
 

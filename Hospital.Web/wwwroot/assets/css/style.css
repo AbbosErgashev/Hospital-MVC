@@ -3,7 +3,11 @@
 
 
 .nav-link {
-    color: white !important
+    color: white
+}
+.nav-link c{
+    color: black !important;
+    font-size: 14px
 }
 .colorb {
     color: #0077b5
