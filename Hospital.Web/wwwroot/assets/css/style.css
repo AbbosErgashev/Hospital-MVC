@@ -250,7 +250,7 @@ a {
         color: #fff
     }
 
-    a:focus, a:hover, .portfolio-cat a:hover, .footer -menu li a:hover {
+    a:focus, a:hover, .portfolio-cat a:hover, .footer-menu li a:hover {
         text-decoration: none
     }
 
@@ -2474,8 +2474,10 @@ hr {
 }
 
 .footer-padding {
-    padding-top: 140px;
-    padding-bottom: 80px
+    padding-top: 130px;
+    padding-bottom: 80px;
+    padding-right: 0px !important;
+    padding-left: 0px !important
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {

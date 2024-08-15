@@ -1,46 +1,53 @@
 ﻿@model Hospital.ViewModels.RoomViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Room";
 }
 
-<h1>Create</h1>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2>Create Room</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-<h4>Room</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div class="form-group">
-                <label asp-for="RoomNumber" class="control-label"></label>
-                <input asp-for="RoomNumber" class="form-control" />
-                <span asp-validation-for="RoomNumber" class="text-danger"></span>
+                        <div class="form-group">
+                            <label asp-for="RoomNumber" class="control-label">Room Number</label>
+                            <input asp-for="RoomNumber" class="form-control" />
+                            <span asp-validation-for="RoomNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Type" class="control-label">Type</label>
+                            <input asp-for="Type" class="form-control" />
+                            <span asp-validation-for="Type" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Status" class="control-label">Status</label>
+                            <input asp-for="Status" class="form-control" />
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="HospitalInfoId" class="control-label">Hospital</label>
+                            <select asp-for="HospitalInfoId" class="form-control" asp-items="ViewBag.Hospital">
+                                <option value="">-- Select Hospital --</option>
+                            </select>
+                            <span asp-validation-for="HospitalInfoId" class="text-danger"></span>
+                        </div>
+
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary ml-3">Back to List</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <input asp-for="Type" class="form-control" />
-                <span asp-validation-for="Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HospitalInfoId" class="control-label"></label>
-                <select asp-for="HospitalInfoId" class="form-control" asp-items="ViewBag.Hospital">
-                    <option value="">-- Select Hospital --</option>
-                </select>
-                <span asp-validation-for="HospitalInfoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-

@@ -2,7 +2,6 @@
 using Hospital.Repositories.Interfaces;
 using Hospital.Utilities;
 using Hospital.ViewModels;
-using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Hospital.Services
 {
@@ -61,14 +60,15 @@ namespace Hospital.Services
             return vm;
         }
 
-        public void InsertRoom(RoomViewModel Room)
+        public Task InsertRoom(RoomViewModel Room)
         {
             var model = new RoomViewModel().ConvertViewModel(Room);
             _unitOfWork.GenericRepository<Room>().Add(model);
             _unitOfWork.Save();
+            return Task.CompletedTask;
         }
 
-        public void UpdateRoom(RoomViewModel Room)
+        public Task UpdateRoom(RoomViewModel Room)
         {
             var model = new RoomViewModel().ConvertViewModel(Room);
             var ModelById = _unitOfWork.GenericRepository<Room>().GetById(model.Id);
@@ -79,6 +79,7 @@ namespace Hospital.Services
 
             _unitOfWork.GenericRepository<Room>().Update(ModelById);
             _unitOfWork.Save();
+            return Task.CompletedTask;
         }
 
         private List<RoomViewModel> ConvertModelToViewModelList(List<Room> modelList)

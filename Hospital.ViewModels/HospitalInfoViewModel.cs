@@ -1,4 +1,5 @@
 ﻿using Hospital.Models;
+using System.Xml;
 
 namespace Hospital.ViewModels
 {
@@ -18,6 +19,7 @@ namespace Hospital.ViewModels
 
         public HospitalInfoViewModel(HospitalInfo model)
         {
+            if (model == null) throw new ArgumentNullException(nameof(model));
             Id = model.Id;
             Name = model.Name;
             Type = model.Type;

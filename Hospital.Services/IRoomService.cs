@@ -7,8 +7,8 @@ namespace Hospital.Services
     {
         PagedResult<RoomViewModel> GetAll(int pageNumber, int pageSize);
         RoomViewModel GetRoomById(int roomId);
-        void UpdateRoom(RoomViewModel room);
-        void InsertRoom(RoomViewModel room);
+        Task UpdateRoom(RoomViewModel room);
+        Task InsertRoom(RoomViewModel room);
         void DeleteRoom(int id);
     }
 }

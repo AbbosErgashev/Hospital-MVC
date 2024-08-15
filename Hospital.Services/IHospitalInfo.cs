@@ -1,4 +1,5 @@
-﻿using Hospital.Utilities;
+﻿using Hospital.Models;
+using Hospital.Utilities;
 using Hospital.ViewModels;
 
 namespace Hospital.Services
@@ -9,9 +10,9 @@ namespace Hospital.Services
 
         HospitalInfoViewModel GetHospitalById(int HospitalId);
 
-        void UpdateHospital(HospitalInfoViewModel hospitalInfo);
+        Task UpdateHospital(HospitalInfoViewModel hospitalInfo);
 
-        void InsertHospitalInfo(HospitalInfoViewModel hospitalInfo);
+        Task InsertHospitalInfo(HospitalInfoViewModel hospitalInfo);
 
         void DeleteHospitalInfo(int id);
     }
