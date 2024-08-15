@@ -58,14 +58,15 @@ namespace Hospital.Services
             return vm;
         }
 
-        public void InsertHospitalInfo(HospitalInfoViewModel hospitalInfo)
+        public Task InsertHospitalInfo(HospitalInfoViewModel hospitalInfo)
         {
             var model = new HospitalInfoViewModel().ConvertViewModel(hospitalInfo);
             _unitOfWork.GenericRepository<HospitalInfo>().Add(model);
             _unitOfWork.Save();
+            return Task.CompletedTask;
         }
 
-        public void UpdateHospital(HospitalInfoViewModel hospitalInfo)
+        public Task UpdateHospital(HospitalInfoViewModel hospitalInfo)
         {
             var model = new HospitalInfoViewModel().ConvertViewModel(hospitalInfo);
             var ModelById = _unitOfWork.GenericRepository<HospitalInfo>().GetById(model.Id);
@@ -75,6 +76,7 @@ namespace Hospital.Services
             ModelById.Country = hospitalInfo.Country;
             _unitOfWork.GenericRepository<HospitalInfo>().Update(ModelById);
             _unitOfWork.Save();
+            return Task.CompletedTask;
         }
 
         private List<HospitalInfoViewModel> ConvertModelToViewModelList(List<HospitalInfo> modelList)

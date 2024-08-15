@@ -1,5 +1,4 @@
-﻿using Hospital.Models;
-using Hospital.Services;
+﻿using Hospital.Services;
 using Hospital.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -32,9 +31,13 @@ namespace Hospital.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(RoomViewModel vm)
+        public async Task<IActionResult> Edit(RoomViewModel vm)
         {
-            _room.UpdateRoom(vm);
+            if(!ModelState.IsValid)
+            {
+                return View(vm);
+            }
+            await _room.UpdateRoom(vm);
             return RedirectToAction("Index");
         }
 
@@ -46,9 +49,13 @@ namespace Hospital.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(RoomViewModel vm)
+        public async Task<IActionResult> Create(RoomViewModel vm)
         {
-            _room.InsertRoom(vm);
+            if (!ModelState.IsValid)
+            {
+                return View(vm);
+            }
+            await _room.InsertRoom(vm);
             return RedirectToAction("Index");
         }
 
@@ -56,6 +63,13 @@ namespace Hospital.Web.Areas.Admin.Controllers
         {
             _room.DeleteRoom(id);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var detail = _room.GetRoomById(id);
+            return View(detail);
         }
     }
 }

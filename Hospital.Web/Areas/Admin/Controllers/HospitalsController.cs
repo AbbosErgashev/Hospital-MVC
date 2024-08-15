@@ -1,6 +1,8 @@
-﻿using Hospital.Services;
+﻿using Hospital.Models;
+using Hospital.Services;
 using Hospital.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Hospital.Repositories;
 
 namespace Hospital.Web.Areas.Admin.Controllers
 {
@@ -23,13 +25,21 @@ namespace Hospital.Web.Areas.Admin.Controllers
         public IActionResult Edit(int id)
         {
             var viewModel = _hospitalInfo.GetHospitalById(id);
+            if (viewModel is null)
+            {
+                return NotFound();
+            }
             return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Edit(HospitalInfoViewModel viewModel)
+        public async Task<IActionResult> Edit(HospitalInfoViewModel viewModel)
         {
-            _hospitalInfo.UpdateHospital(viewModel);
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+            await _hospitalInfo.UpdateHospital(viewModel);
             return RedirectToAction("Index");
         }
 
@@ -40,16 +50,36 @@ namespace Hospital.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(HospitalInfoViewModel viewModel)
+        public async Task<IActionResult> Create(HospitalInfoViewModel viewModel)
         {
-            _hospitalInfo.InsertHospitalInfo(viewModel);
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+            await _hospitalInfo.InsertHospitalInfo(viewModel);
             return RedirectToAction("Index");
+
         }
 
         public IActionResult Delete(int id)
         {
+            if (!ModelState.IsValid)
+            {
+                throw new ArgumentNullException("Item is not found!");
+            }
             _hospitalInfo.DeleteHospitalInfo(id);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                throw new ArgumentNullException("Item is not found!");
+            }
+            var entity = _hospitalInfo.GetHospitalById(id);
+            return View(entity);
         }
     }
 }
