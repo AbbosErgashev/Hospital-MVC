@@ -56,15 +56,15 @@ namespace Hospital.Web.Areas.Doctor.Controllers
             ViewBag.evenStart = new SelectList(afternoonShiftStartTime, "Value", "Text");
             ViewBag.evenEnd = new SelectList(afternoonShiftEndTime, "Value", "Text");
 
-            //TimingViewModel vm = new TimingViewModel();
-            //vm.ScheduleDate = DateTime.Now;
-            //vm.ScheduleDate = vm.ScheduleDate.AddDays(1);
+            TimingViewModel vm = new TimingViewModel();
+            vm.ScheduleDate = DateTime.UtcNow;
+            vm.ScheduleDate = vm.ScheduleDate.AddDays(1);
 
             return View();
         }
 
         [HttpPost]
-        public IActionResult AddTiming(TimingViewModel vm)
+        public async Task<IActionResult> AddTiming(TimingViewModel vm)
         {
             var ClaimsIdentity = (ClaimsIdentity)User.Identity;
             var Claims = ClaimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
@@ -75,7 +75,7 @@ namespace Hospital.Web.Areas.Doctor.Controllers
                 _doctorService.AddTiming(vm);
             }
 
-            _doctorService.AddTiming(vm);
+            await _doctorService.AddTiming(vm);
             return RedirectToAction("Index");
         }
 
@@ -87,9 +87,9 @@ namespace Hospital.Web.Areas.Doctor.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(TimingViewModel vm)
+        public async Task<IActionResult> Edit(TimingViewModel vm)
         {
-            _doctorService.UpdateTiming(vm);
+            await _doctorService.UpdateTiming(vm);
             return RedirectToAction("Index");
         }
 

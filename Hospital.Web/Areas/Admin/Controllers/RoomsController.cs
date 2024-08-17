@@ -33,7 +33,7 @@ namespace Hospital.Web.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(RoomViewModel vm)
         {
-            if(!ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 return View(vm);
             }
@@ -51,7 +51,7 @@ namespace Hospital.Web.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(RoomViewModel vm)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 return View(vm);
             }
@@ -68,6 +68,7 @@ namespace Hospital.Web.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
+            ViewBag.hospital = new SelectList(_hospitalInfo.GetAll(1, 10).Data, "Id", "Name");
             var detail = _room.GetRoomById(id);
             return View(detail);
         }
