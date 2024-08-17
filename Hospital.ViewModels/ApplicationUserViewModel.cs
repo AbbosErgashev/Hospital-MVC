@@ -4,6 +4,7 @@ namespace Hospital.ViewModels
 {
     public class ApplicationUserViewModel
     {
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string UserName { get; set; }
@@ -20,6 +21,7 @@ namespace Hospital.ViewModels
 
         public ApplicationUserViewModel(ApplicationUser user)
         {
+            Id = user.Id.ToString();
             Name = user.Name;
             City = user.City;
             Gender = user.Gender;
@@ -33,6 +35,7 @@ namespace Hospital.ViewModels
         {
             return new ApplicationUser
             {
+                Id = user.Id,
                 Name = user.Name,
                 City = user.City,
                 Gender = user.Gender,

@@ -1,72 +1,74 @@
 ﻿@using Hospital.Models
 @model Hospital.ViewModels.TimingViewModel
 
-<form asp-action="addtiming" class="container mt-4">
-    <div class="form-group mb-3">
-        <label asp-for="Doctor" class="form-label"></label>
-        <input asp-for="Doctor" class="form-control" />
-        <div class="invalid-feedback">
+<form asp-action="addtiming" class="container mt-5 p-4 shadow-lg rounded bg-light">
+    <h2 class="text-center mb-4">Schedule Doctor is Timing</h2>
+
+    <div class="form-group mb-4">
+        <label asp-for="Doctor" class="form-label fw-bold"></label>
+        <input asp-for="Doctor" class="form-control" placeholder="Enter Doctor is Name" />
+        <div class="text-danger small">
             <span asp-validation-for="Doctor"></span>
         </div>
     </div>
 
-    <div class="form-floating mb-3">
-        <input asp-for="ScheduleDate" class="form-control" aria-required="true" type="date" />
-        <label asp-for="ScheduleDate"></label>
-        <div class="invalid-feedback">
+    <div class="form-floating mb-4">
+        <input asp-for="ScheduleDate" class="form-control" type="date" aria-required="true" />
+        <label asp-for="ScheduleDate" class="form-label">Schedule Date</label>
+        <div class="text-danger small">
             <span asp-validation-for="ScheduleDate"></span>
         </div>
     </div>
 
-    <div class="form-floating mb-3">
+    <div class="form-floating mb-4">
         <select asp-for="Status" asp-items="@Html.GetEnumSelectList<Status>()" class="form-select">
             <option value="">Select Status</option>
         </select>
-        <label asp-for="Status"></label>
-        <div class="invalid-feedback">
+        <label asp-for="Status" class="form-label">Status</label>
+        <div class="text-danger small">
             <span asp-validation-for="Status"></span>
         </div>
     </div>
 
-    <div class="row mb-3">
+    <div class="row mb-4">
         <div class="col">
             <div class="form-floating">
                 <select asp-for="MorningShiftStartTime" asp-items="@ViewBag.morningStart" class="form-select">
-                    <option value="">Select Start Time</option>
+                    <option value="">Select Morning Start Time</option>
                 </select>
-                <label asp-for="MorningShiftStartTime"></label>
+                <label asp-for="MorningShiftStartTime" class="form-label">Morning Start</label>
             </div>
         </div>
         <div class="col">
             <div class="form-floating">
                 <select asp-for="MorningShiftEndTime" asp-items="@ViewBag.morningEnd" class="form-select">
-                    <option value="">Select End Time</option>
+                    <option value="">Select Morning End Time</option>
                 </select>
-                <label asp-for="MorningShiftEndTime"></label>
+                <label asp-for="MorningShiftEndTime" class="form-label">Morning End</label>
             </div>
         </div>
     </div>
 
-    <div class="row mb-3">
+    <div class="row mb-4">
         <div class="col">
             <div class="form-floating">
                 <select asp-for="AfternoonShiftStartTime" asp-items="@ViewBag.evenStart" class="form-select">
-                    <option value="">Select Start Time</option>
+                    <option value="">Select Afternoon Start Time</option>
                 </select>
-                <label asp-for="AfternoonShiftStartTime"></label>
+                <label asp-for="AfternoonShiftStartTime" class="form-label">Afternoon Start</label>
             </div>
         </div>
         <div class="col">
             <div class="form-floating">
                 <select asp-for="AfternoonShiftEndTime" asp-items="@ViewBag.evenEnd" class="form-select">
-                    <option value="">Select End Time</option>
+                    <option value="">Select Afternoon End Time</option>
                 </select>
-                <label asp-for="AfternoonShiftEndTime"></label>
+                <label asp-for="AfternoonShiftEndTime" class="form-label">Afternoon End</label>
             </div>
         </div>
     </div>
 
     <div class="text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-success btn-lg px-5">Submit</button>
     </div>
 </form>

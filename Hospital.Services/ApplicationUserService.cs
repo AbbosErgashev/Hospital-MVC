@@ -82,6 +82,11 @@ namespace Hospital.Services
             throw new NotImplementedException();
         }
 
+        public Task GetDoctorById(ApplicationUserViewModel applicationUser)
+        {
+            throw new NotImplementedException();
+        }
+
         public PagedResult<ApplicationUserViewModel> SearchDoctor(int pageNumber, int pageSize, string Spici___)
         {
             throw new NotImplementedException();

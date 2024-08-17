@@ -18,7 +18,8 @@ namespace Hospital.Web.Areas.Admin.Controllers
             var pagedResult = _userService.GetAll(PageNumber, PageSize);
             return View(pagedResult);
         }
-        
+
+        [HttpGet]
         public IActionResult AllDoctors(int PageNumber = 1, int PageSize = 10)
         {
             var pagedResult = _userService.GetAllDoctor(PageNumber, PageSize);

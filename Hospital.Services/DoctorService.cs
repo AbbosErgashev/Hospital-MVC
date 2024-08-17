@@ -14,11 +14,12 @@ namespace Hospital.Services
             _unitOfWork = unitOfWork;
         }
 
-        public void AddTiming(TimingViewModel timing)
+        public Task AddTiming(TimingViewModel timing)
         {
             var model = new TimingViewModel().ConvertViewModel(timing);
             _unitOfWork.GenericRepository<Timing>().Add(model);
             _unitOfWork.Save();
+            return Task.CompletedTask;
         }
 
         public void DeleteTiming(int TimingId)
@@ -72,7 +73,7 @@ namespace Hospital.Services
             return vm;
         }
 
-        public void UpdateTiming(TimingViewModel timing)
+        public Task UpdateTiming(TimingViewModel timing)
         {
             var model = new TimingViewModel().ConvertViewModel(timing);
             var ModelById = _unitOfWork.GenericRepository<Timing>().GetById(model.Id);
@@ -87,6 +88,7 @@ namespace Hospital.Services
 
             _unitOfWork.GenericRepository<Timing>().Update(ModelById);
             _unitOfWork.Save();
+            return Task.CompletedTask;
         }
 
         private List<TimingViewModel> ConvertModelToViewModelList(List<Timing> modelList)

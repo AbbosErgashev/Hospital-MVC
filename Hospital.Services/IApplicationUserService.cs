@@ -9,6 +9,8 @@ namespace Hospital.Services
         public PagedResult<ApplicationUserViewModel> GetAll(int pageNumber, int pageSize);
         public PagedResult<ApplicationUserViewModel> GetAllDoctor(int pageNumber, int pageSize);
         public PagedResult<ApplicationUserViewModel> GetAllPatient(int pageNumber, int pageSize);
-        public PagedResult<ApplicationUserViewModel> SearchDoctor(int pageNumber, int pageSize, string Spici___);
+        public PagedResult<ApplicationUserViewModel> SearchDoctor(int pageNumber, int pageSize, string Spicialist);
+
+        Task GetDoctorById(ApplicationUserViewModel applicationUser);
     }
 }
