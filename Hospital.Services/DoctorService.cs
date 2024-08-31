@@ -59,7 +59,7 @@ namespace Hospital.Services
             return result;
         }
 
-        public IEnumerable<TimingViewModel> GetAll()
+        public IEnumerable<TimingViewModel> GetAllList()
         {
             var timingList = _unitOfWork.GenericRepository<Timing>().GetAll().ToList();
             var vmList = ConvertModelToViewModelList(timingList);
