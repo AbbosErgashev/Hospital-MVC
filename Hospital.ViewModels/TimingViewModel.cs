@@ -13,6 +13,7 @@ namespace Hospital.ViewModels
         public int AfternoonShiftEndTime { get; set; }
         public int Duration { get; set; }
         public Status Status { get; set; }
+        public int DoctorId { get; set; }
         public ApplicationUser Doctor { get; set; }
 
         List<SelectListItem> morningShiftStart = new List<SelectListItem>();
@@ -36,6 +37,7 @@ namespace Hospital.ViewModels
             Duration = model.Duration;
             Status = model.Status;
             Doctor = model.Doctor;
+            DoctorId = model.Id;
         }
 
         public Timing ConvertViewModel(TimingViewModel model)
@@ -50,7 +52,7 @@ namespace Hospital.ViewModels
                 AfternoonShiftEndTime = model.AfternoonShiftEndTime,
                 Duration = model.Duration,
                 Status = model.Status,
-                Doctor = model.Doctor,
+                Doctor = model.Doctor
             };
         }
     }

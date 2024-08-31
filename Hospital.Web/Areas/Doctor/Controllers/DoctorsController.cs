@@ -25,6 +25,8 @@ namespace Hospital.Web.Areas.Doctor.Controllers
         [HttpGet]
         public IActionResult AddTiming()
         {
+            ViewBag.Doctor = new SelectList(_doctorService.GetAllList(), "Id", "DoctorId");
+
             Timing timing = new Timing();
             List<SelectListItem> morningShiftStartTime = new List<SelectListItem>();
             List<SelectListItem> morningShiftEndTime = new List<SelectListItem>();

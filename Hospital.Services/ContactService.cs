@@ -58,14 +58,15 @@ namespace Hospital.Services
             return vm;
         }
 
-        public void InsertContact(ContactViewModel Contact)
+        public Task InsertContact(ContactViewModel Contact)
         {
             var model = new ContactViewModel().ConvertViewModel(Contact);
             _unitOfWork.GenericRepository<Contact>().Add(model);
             _unitOfWork.Save();
+            return Task.CompletedTask;
         }
 
-        public void UpdateContact(ContactViewModel contact)
+        public Task UpdateContact(ContactViewModel contact)
         {
             var model = new ContactViewModel().ConvertViewModel(contact);
             var ModelById = _unitOfWork.GenericRepository<Contact>().GetById(model.Id);
@@ -75,6 +76,7 @@ namespace Hospital.Services
 
             _unitOfWork.GenericRepository<Contact>().Update(ModelById);
             _unitOfWork.Save();
+            return Task.CompletedTask;
         }
 
         private List<ContactViewModel> ConvertModelToViewModelList(List<Contact> modelList)

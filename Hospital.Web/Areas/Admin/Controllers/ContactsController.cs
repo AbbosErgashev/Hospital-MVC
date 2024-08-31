@@ -31,9 +31,9 @@ namespace Hospital.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(ContactViewModel vm)
+        public async Task<IActionResult> Edit(ContactViewModel vm)
         {
-            _contact.UpdateContact(vm);
+            await _contact.UpdateContact(vm);
             return RedirectToAction("Index");
         }
 
@@ -45,9 +45,9 @@ namespace Hospital.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(ContactViewModel vm)
+        public async Task<IActionResult> Create(ContactViewModel vm)
         {
-            _contact.InsertContact(vm);
+            await _contact.InsertContact(vm);
             return RedirectToAction("Index");
         }
 
@@ -55,6 +55,14 @@ namespace Hospital.Web.Areas.Admin.Controllers
         {
             _contact.DeleteContact(id);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            ViewBag.hospital = new SelectList(_hospitalInfo.GetAll(1, 10).Data, "Id", "Name");
+            var model = _contact.GetContactById(id);
+            return View(model);
         }
     }
 }

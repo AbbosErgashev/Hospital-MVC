@@ -5,11 +5,11 @@
     <h2 class="text-center mb-4">Schedule Doctor is Timing</h2>
 
     <div class="form-group mb-4">
-        <label asp-for="Doctor" class="form-label fw-bold"></label>
-        <input asp-for="Doctor" class="form-control" placeholder="Enter Doctor is Name" />
-        <div class="text-danger small">
-            <span asp-validation-for="Doctor"></span>
-        </div>
+        <label asp-for="DoctorId" class="form-label fw-bold"></label>
+        <select asp-for="DoctorId" class="form-control" asp-items="ViewBag.Doctor">
+            <option value="">-- Select Doctor --</option>
+        </select>
+        <span asp-validation-for="Doctor" class="text-danger"></span>
     </div>
 
     <div class="form-floating mb-4">
@@ -22,7 +22,7 @@
 
     <div class="form-floating mb-4">
         <select asp-for="Status" asp-items="@Html.GetEnumSelectList<Status>()" class="form-select">
-            <option value="">Select Status</option>
+            <option value="">-- Select Status --</option>
         </select>
         <label asp-for="Status" class="form-label">Status</label>
         <div class="text-danger small">
@@ -69,6 +69,6 @@
     </div>
 
     <div class="text-center">
-        <button type="submit" class="btn btn-success btn-lg px-5">Submit</button>
+        <a class="btn btn-sm btn-info" asp-controller="Hospitals" asp-action="Index" asp-area="admin">Submit</a>
     </div>
 </form>

@@ -7,8 +7,8 @@ namespace Hospital.Services
     {
         PagedResult<ContactViewModel> GetAll(int pageNumber, int pageSize);
         ContactViewModel GetContactById(int ContactId);
-        void UpdateContact(ContactViewModel contact);
-        void InsertContact(ContactViewModel contact);
+        Task UpdateContact(ContactViewModel contact);
+        Task InsertContact(ContactViewModel contact);
         void DeleteContact(int id);
     }
 }

@@ -18,15 +18,23 @@ namespace Hospital.Utilities
             if (file is not null)
             {
                 string fileDirectory = Path.Combine(_env.WebRootPath, "Images");
-                fileName = Guid.NewGuid() + "+" + file.FileName;
+
+                if (!Directory.Exists(fileDirectory))
+                {
+                    Directory.CreateDirectory(fileDirectory);
+                }
+
+                fileName = Guid.NewGuid() + "_" + file.FileName;
                 string filePath = Path.Combine(fileDirectory, fileName);
+
                 using (FileStream fs = new FileStream(filePath, FileMode.Create))
                 {
-                    file.CopyToAsync(fs);
+                    file.CopyTo(fs);
                 }
             }
 
             return fileName;
         }
+
     }
 }
